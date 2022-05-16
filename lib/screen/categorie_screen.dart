@@ -18,13 +18,15 @@ class CategorieScreen extends StatelessWidget {
         padding: EdgeInsets.all(10),
           children: categorieData
               .map((catData) =>
-                  CategorieIteam(tittle: catData.tittle, color: catData.color))
+                  CategorieIteam(tittle: catData.tittle, color: catData.color, id: catData.id,))
               .toList(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 2 / 2.5,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
+             maxCrossAxisExtent: 200,
+             childAspectRatio: 2/1.5,
+             crossAxisSpacing: 20,
+             mainAxisSpacing: 20
+             
+             
           )),
     );
   }

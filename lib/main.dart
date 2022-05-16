@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:food_management/screen/categorie_food_screen.dart';
+import 'package:food_management/screen/food_details.dart';
 
 import 'screen/categorie_screen.dart';
 
@@ -21,6 +23,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch:  Colors.purple,
+        primaryColor: Colors.blue,
         accentColor: Colors.amber,
         canvasColor: Color(0xffffffe6),
         fontFamily: 'Relway',
@@ -30,12 +33,28 @@ class _MyAppState extends State<MyApp> {
           // bodyText2: TextStyle(color: Colors.green),
           titleMedium: TextStyle(
             fontSize: 20,
-             color: Colors.black,
+             color:  Color(0xffff0000),
+            // fontWeight: FontWeight.bold,
+             letterSpacing: 2,
+             
             fontFamily: 'RobotoCondensed'
+          ),
+          titleSmall: TextStyle(
+            fontSize: 15,
+             color:  Colors.purple,
+             fontWeight: FontWeight.w400,
+             
+            fontFamily: 'Relway'
           )
         )
       ),
-      home: CategorieScreen(),
+     // home: CategorieScreen(),
+     initialRoute: '/',
+      routes: {
+        '/':(context) => CategorieScreen(),
+        CategorieFoodScreen.routeName: (context) => CategorieFoodScreen(),
+        FoodDetails.routeName : (context) => FoodDetails()
+      },
     );
   }
 }
