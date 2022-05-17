@@ -10,6 +10,7 @@ class FoodDetails extends StatelessWidget {
 
   Widget buildSelectedTittle(BuildContext context, String tittle) {
     return Container(
+      
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         tittle,

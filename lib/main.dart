@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_management/screen/categorie_food_screen.dart';
 import 'package:food_management/screen/food_details.dart';
-
-import 'screen/categorie_screen.dart';
+ 
+import 'screen/tab_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
      // home: CategorieScreen(),
      initialRoute: '/',
       routes: {
-        '/':(context) => CategorieScreen(),
+        '/':(context) => TabScreen(),
         CategorieFoodScreen.routeName: (context) => CategorieFoodScreen(),
         FoodDetails.routeName : (context) => FoodDetails()
       },
