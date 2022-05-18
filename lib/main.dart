@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_management/screen/categorie_food_screen.dart';
+import 'package:food_management/screen/filter_screen.dart';
 import 'package:food_management/screen/food_details.dart';
+import 'package:food_management/widget/main_drawer.dart';
  
 import 'screen/tab_screen.dart';
 
@@ -53,7 +55,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/':(context) => TabScreen(),
         CategorieFoodScreen.routeName: (context) => CategorieFoodScreen(),
-        FoodDetails.routeName : (context) => FoodDetails()
+        FoodDetails.routeName : (context) => FoodDetails(),
+        FilterScreen.routeName:(context) => FilterScreen()
       },
     );
   }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_management/screen/categorie_screen.dart';
 import 'package:food_management/screen/favourite_screen.dart';
+import 'package:food_management/widget/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
@@ -36,22 +37,27 @@ class _TabScreenState extends State<TabScreen> {
         title: Text(_pages[_selectedIndex]["tittle"]),
         elevation: 0,
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedIndex]["page"],
 
-       bottomNavigationBar: BottomNavigationBar(
+       bottomNavigationBar: ClipRRect(
+         borderRadius: BorderRadius.only(topLeft:  Radius.circular(25), topRight: Radius.circular(25)),
          
-         backgroundColor: Colors.purple,
-         selectedItemColor: Colors.white,
-         unselectedItemColor: Colors.white54,
-         currentIndex: _selectedIndex,
-         onTap: _selectedPage,
-         items: [
-         
-
-         BottomNavigationBarItem(icon: Icon(Icons.category_outlined),label: "Category"),
-         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Favourite")
-
-       ]),
+         child: BottomNavigationBar(
+          
+           backgroundColor: Colors.purple,
+           selectedItemColor: Colors.white,
+           unselectedItemColor: Colors.white54,
+           currentIndex: _selectedIndex,
+           onTap: _selectedPage,
+           items: [
+           
+       
+           BottomNavigationBarItem(icon: Icon(Icons.category_outlined),label: "Category"),
+           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Favourite")
+       
+         ]),
+       ),
     );
   }
 }
