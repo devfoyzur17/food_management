@@ -46,11 +46,11 @@ class MainDrawer extends StatelessWidget {
           padding: EdgeInsets.only(left: 10),
         ),
         buildListTile(Icons.restaurant, "Restaurant",(){
-            Navigator.of(context).pushNamed("/");
+            Navigator.of(context).pushReplacementNamed("/");
         }),
         buildListTile(Icons.filter_list, "Filter",(){
 
-            Navigator.of(context).pushNamed(FilterScreen.routeName);
+            Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
         }),
       ],
     ));

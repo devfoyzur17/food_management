@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, dead_code
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, dead_code, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:food_management/screen/food_details.dart';
@@ -12,6 +12,7 @@ class FoodItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
   const FoodItem(
       {Key? key,
       required this.id,
@@ -19,7 +20,8 @@ class FoodItem extends StatelessWidget {
       required this.imageUrl,
       required this.duration,
       required this.complexity,
-      required this.affordability})
+      required this.affordability,
+      required this.removeItem})
       : super(key: key);
 
   String get complexityText {
@@ -41,35 +43,37 @@ class FoodItem extends StatelessWidget {
     }
   }
 
-  String get affordabilityText{
-
-    switch(affordability){
+  String get affordabilityText {
+    switch (affordability) {
       case Affordability.Affordable:
-      return 'Affordable';
-      break;
+        return 'Affordable';
+        break;
 
       case Affordability.Luxurious:
-      return 'Luxurious';
-      break;
+        return 'Luxurious';
+        break;
 
       case Affordability.Pricey:
-      return 'Privey';
-      break;
+        return 'Privey';
+        break;
 
       default:
-      return 'Unknown';
+        return 'Unknown';
     }
-
   }
 
   void selectedFood(BuildContext context) {
-    Navigator.of(context).pushNamed(FoodDetails.routeName, arguments: id);
+    Navigator.of(context).pushNamed(FoodDetails.routeName, arguments: id).then((value) {
+      if(removeItem != null){
+        removeItem(value);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         selectedFood(context);
       },
       child: Card(
@@ -133,7 +137,7 @@ class FoodItem extends StatelessWidget {
                       Text(complexityText)
                     ],
                   ),
-                     Row(
+                  Row(
                     children: [
                       Icon(Icons.attach_money),
                       SizedBox(

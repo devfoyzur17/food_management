@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_declarations
 
 import 'package:flutter/material.dart';
+import 'package:food_management/widget/main_drawer.dart';
  
 class FilterScreen extends StatelessWidget {
   const FilterScreen({Key? key}) : super(key: key);
@@ -11,7 +12,9 @@ class FilterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("This is filter screen"),
+      appBar: AppBar(title: Text("Filter")),
+      drawer: MainDrawer(),
+      body: Center(child: Text("This is filter screen")),
     );
   }
 }
