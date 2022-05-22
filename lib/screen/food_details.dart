@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:food_management/data/food_data.dart';
 
 class FoodDetails extends StatelessWidget {
-  const FoodDetails({Key? key}) : super(key: key);
+  final Function toggleFavourite;
+  final Function isFavourite;
+  const FoodDetails(this.toggleFavourite, this.isFavourite, {Key? key}) : super(key: key);
 
   static const routeName = '/food-details';
 
@@ -90,10 +92,8 @@ class FoodDetails extends StatelessWidget {
         ),
         
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.delete),onPressed: () {
-        Navigator.of(context).pop(foodId);
-        
-      },),
+      floatingActionButton: FloatingActionButton(child: Icon(isFavourite(foodId)?Icons.star:Icons.star_border),
+      onPressed: (){toggleFavourite(foodId);},),
     );
   }
 }

@@ -73,7 +73,7 @@ class _CategorieFoodScreenState extends State<CategorieFoodScreen> {
               duration: displayedFood![index].duration,
               complexity: displayedFood![index].complexity,
               affordability: displayedFood![index].affordability,
-              removeItem: removeFood,
+             // removeItem: removeFood,
             );
           }),
     );

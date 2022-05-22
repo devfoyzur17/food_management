@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, equal_keys_in_map
 
 import 'package:flutter/material.dart';
+import 'package:food_management/model/food_model.dart';
 import 'package:food_management/screen/categorie_screen.dart';
 import 'package:food_management/screen/favourite_screen.dart';
 import 'package:food_management/widget/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
-  const TabScreen({Key? key}) : super(key: key);
+  final List<FoodModel> favoutiteFood;
+  const TabScreen(this.favoutiteFood, {Key? key}) : super(key: key);
 
   @override
   State<TabScreen> createState() => _TabScreenState();
@@ -14,13 +16,22 @@ class TabScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabScreen> {
 
- final List<dynamic> _pages =[
+  List<dynamic>? _pages;
+
+  int _selectedIndex=0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    _pages =[
   {"page":  CategorieScreen(), "tittle":"All Category",},
-   {"page": FavouriteScreen(), "tittle":"Your Favourite"}
+   {"page": FavouriteScreen(widget.favoutiteFood), "tittle":"Your Favourite"}
     
   ];
 
-  int _selectedIndex=0;
+    super.initState();
+  }
 
   void _selectedPage(int index){
     setState(() {
@@ -34,11 +45,11 @@ class _TabScreenState extends State<TabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_pages[_selectedIndex]["tittle"]),
+        title: Text(_pages![_selectedIndex]["tittle"]),
         elevation: 0,
       ),
       drawer: MainDrawer(),
-      body: _pages[_selectedIndex]["page"],
+      body: _pages![_selectedIndex]["page"],
 
        bottomNavigationBar: ClipRRect(
          borderRadius: BorderRadius.only(topLeft:  Radius.circular(25), topRight: Radius.circular(25)),

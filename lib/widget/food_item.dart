@@ -12,7 +12,7 @@ class FoodItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeItem;
+ // final Function removeItem;
   const FoodItem(
       {Key? key,
       required this.id,
@@ -21,7 +21,8 @@ class FoodItem extends StatelessWidget {
       required this.duration,
       required this.complexity,
       required this.affordability,
-      required this.removeItem})
+     // required this.removeItem
+      })
       : super(key: key);
 
   String get complexityText {
@@ -64,9 +65,9 @@ class FoodItem extends StatelessWidget {
 
   void selectedFood(BuildContext context) {
     Navigator.of(context).pushNamed(FoodDetails.routeName, arguments: id).then((value) {
-      if(removeItem != null){
-        removeItem(value);
-      }
+      // if(removeItem != null){
+      //  removeItem(value);
+      // }
     });
   }
 
