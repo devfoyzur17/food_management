@@ -1,5 +1,5 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, use_key_in_widget_constructors
-
+// ignore_for_file: prefer_const_constructors, unused_local_variable, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+ 
 import 'package:flutter/material.dart';
 import 'package:food_management/data/food_data.dart';
 import 'package:food_management/model/food_model.dart';
@@ -13,6 +13,9 @@ class CategorieFoodScreen extends StatefulWidget {
   //     : super(key: key);
 
   static const routeName = '/categorie-food-screen';
+  final List<FoodModel> availableMils;
+
+  CategorieFoodScreen(this.availableMils);
 
   @override
   State<CategorieFoodScreen> createState() => _CategorieFoodScreenState();
@@ -25,6 +28,7 @@ class _CategorieFoodScreenState extends State<CategorieFoodScreen> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
 
     super.initState();
@@ -32,6 +36,7 @@ class _CategorieFoodScreenState extends State<CategorieFoodScreen> {
 
   @override
   void didChangeDependencies() {
+    // ignore: todo
     // TODO: implement didChangeDependencies
 
     if (!isLodding) {
@@ -39,7 +44,7 @@ class _CategorieFoodScreenState extends State<CategorieFoodScreen> {
           ModalRoute.of(context)!.settings.arguments as Map<String, String>;
       final categorieId = routArgs['id'];
       categoryTitle = routArgs['tittle'];
-      displayedFood = foodData.where((food) {
+      displayedFood = widget.availableMils.where((food) {
         return food.categories.contains(categorieId);
       }).toList();
       isLodding = true;
